@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Index</title>
+    <script src="jquery-1.6.4.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="tooltip.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+        div {
+            font-size: 32px;
+            border: 1px solid red;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="foo" title="This is Foo One tooltip">
+        Foo One
+    </div>
+    <div class="foo" title="This is Foo Two tooltip">
+        Foo Two
+    </div>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+    $('.foo').tooltip();
+});
+</script>
+</body>
+</html>
