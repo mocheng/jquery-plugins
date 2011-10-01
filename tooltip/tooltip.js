@@ -6,21 +6,21 @@ $.fn.tooltip = function(options) {
         return '<p style="font-size:32px; position:absolute; background:yellow; display:none; zIndex:9999" class="content">hide</p>';
     }
 
-    function setTip(content) {
-        tip.html(content);
-    }
-
-    function showTip(x, y) {
-        tip.css({top : y, left : x});
-        tip.fadeIn('slow');
-    }
-
-    function hideTip() {
-        tip.fadeOut('slow');
-    }
-
     var tip = tip || $(getTip()).appendTo($('body'));
-    //console.log(tip.html());
+
+    $.extend(tip, {
+        set: function (content) {
+            return this.html(content);
+        },
+
+        show: function(x, y) {
+            return this.css({top : y, left : x}).fadeIn('slow');
+        },
+
+        hide: function() {
+            return this.fadeOut('slow');
+        }
+    });
 
     return this.each(function() {
         var $this = $(this),
@@ -30,11 +30,10 @@ $.fn.tooltip = function(options) {
             this.title = '';
 
             $this.hover(function(e) {
-                setTip(title);
-                //showTip($this.offset());
-                showTip(e.pageX, e.pageY);
+                tip.set(title);
+                tip.show(e.pageX, e.pageY);
             }, function(e){
-                hideTip();
+                tip.hide();
             });
         }
     });
